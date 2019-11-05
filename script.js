@@ -1,995 +1,389 @@
-const names = [
-  { name: "Aad", surname: "Groen", gender: "male", region: "Netherlands" },
-  {
-    name: "Harm van der",
-    surname: "Pol",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Pieter", surname: "Meijer", gender: "male", region: "Netherlands" },
-  {
-    name: "Michiel",
-    surname: "Gerritsen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Sander van",
-    surname: "Wijk",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Olaf de", surname: "Ruiter", gender: "male", region: "Netherlands" },
-  { name: "Teun de", surname: "Wit", gender: "male", region: "Netherlands" },
-  { name: "Tom", surname: "Schouten", gender: "male", region: "Netherlands" },
-  {
-    name: "Mirthe",
-    surname: "Meijer",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Lisa", surname: "Kok", gender: "female", region: "Netherlands" },
-  { name: "Emiel de", surname: "Vos", gender: "male", region: "Netherlands" },
-  {
-    name: "Diewertje van",
-    surname: "Loon",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Arjan van",
-    surname: "Vliet",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Femke", surname: "Meijer", gender: "female", region: "Netherlands" },
-  {
-    name: "Lonneke",
-    surname: "Sanders",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Christien",
-    surname: "Prins",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Mathijs", surname: "Mol", gender: "male", region: "Netherlands" },
-  { name: "Carlijn", surname: "Bos", gender: "female", region: "Netherlands" },
-  {
-    name: "Eelco van der",
-    surname: "Meer",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Willemijn",
-    surname: "Hofman",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Reinout van der",
-    surname: "Veen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Lotte",
-    surname: "Hoekstra",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Aart", surname: "Willems", gender: "male", region: "Netherlands" },
-  { name: "Florus", surname: "Prins", gender: "male", region: "Netherlands" },
-  {
-    name: "Valentijn",
-    surname: "Gerritsen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Paul de", surname: "Vos", gender: "male", region: "Netherlands" },
-  { name: "Henk", surname: "Postma", gender: "male", region: "Netherlands" },
-  {
-    name: "Willemijn van",
-    surname: "Dijk",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Boudewijn van",
-    surname: "Dijk",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Jaap de", surname: "Ruiter", gender: "male", region: "Netherlands" },
-  {
-    name: "Floor van",
-    surname: "Veen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Tom de", surname: "Leeuw", gender: "male", region: "Netherlands" },
-  {
-    name: "Heleen van",
-    surname: "Loon",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Luuk", surname: "Hermans", gender: "male", region: "Netherlands" },
-  {
-    name: "Huib van der",
-    surname: "Veen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Jaap", surname: "Hoekstra", gender: "male", region: "Netherlands" },
-  {
-    name: "Mathijs van",
-    surname: "Dijk",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Peter de",
-    surname: "Koning",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Maartje",
-    surname: "Schouten",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Thomas van", surname: "Dam", gender: "male", region: "Netherlands" },
-  { name: "Huib", surname: "Verhoeven", gender: "male", region: "Netherlands" },
-  {
-    name: "Imke van",
-    surname: "Dongen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Maartje",
-    surname: "Kramer",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Willemijn van",
-    surname: "Dongen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Daan",
-    surname: "Timmermans",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Tom", surname: "Huisman", gender: "male", region: "Netherlands" },
-  {
-    name: "Doortje de",
-    surname: "Bruijn",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Reinout",
-    surname: "Hoekstra",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Victor de",
-    surname: "Graaf",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Ivo van", surname: "Vliet", gender: "male", region: "Netherlands" },
-  {
-    name: "Valentijn",
-    surname: "Evers",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Imke", surname: "Jansen", gender: "female", region: "Netherlands" },
-  {
-    name: "Willemijn de",
-    surname: "Lange",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Luuk", surname: "Mulder", gender: "male", region: "Netherlands" },
-  {
-    name: "Stefan",
-    surname: "Hendriks",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Leentje",
-    surname: "Schouten",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Petra de", surname: "Wit", gender: "female", region: "Netherlands" },
-  { name: "Thea", surname: "Kramer", gender: "female", region: "Netherlands" },
-  { name: "Aad", surname: "Koning", gender: "male", region: "Netherlands" },
-  { name: "Aart", surname: "Dekker", gender: "male", region: "Netherlands" },
-  { name: "Quintin", surname: "Jonker", gender: "male", region: "Netherlands" },
-  {
-    name: "Eline van de",
-    surname: "Velde",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Kristien van de",
-    surname: "Velde",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Dirk van der",
-    surname: "Pol",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Kristien",
-    surname: "Scholten",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Anna",
-    surname: "Hendriks",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Eva de", surname: "Haan", gender: "female", region: "Netherlands" },
-  { name: "Ivo", surname: "Willems", gender: "male", region: "Netherlands" },
-  { name: "Chris van", surname: "Loon", gender: "male", region: "Netherlands" },
-  {
-    name: "Laura van der",
-    surname: "Meulen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Jack", surname: "Vos", gender: "male", region: "Netherlands" },
-  {
-    name: "Hanneke van",
-    surname: "Veen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Eelco", surname: "Bos", gender: "male", region: "Netherlands" },
-  {
-    name: "Lisa van der",
-    surname: "Horst",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Gerrit",
-    surname: "Hoekstra",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Klaas van der",
-    surname: "Velden",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Femke de",
-    surname: "Graaf",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Tineke",
-    surname: "Scholten",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Boudewijn de",
-    surname: "Vries",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Corien de",
-    surname: "Haan",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Florus van den",
-    surname: "Berg",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Victor van de",
-    surname: "Velde",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Arjan",
-    surname: "Verhoeven",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Ineke van",
-    surname: "Dam",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Stefan van",
-    surname: "Beek",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Willeke",
-    surname: "Kuijpers",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Suzanne de",
-    surname: "Koning",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Rik", surname: "Smeets", gender: "male", region: "Netherlands" },
-  { name: "Harm", surname: "Bosman", gender: "male", region: "Netherlands" },
-  {
-    name: "Christiaan",
-    surname: "Dekker",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Gerrit", surname: "Jonker", gender: "male", region: "Netherlands" },
-  {
-    name: "Victor",
-    surname: "Timmermans",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Eelco", surname: "Postma", gender: "male", region: "Netherlands" },
-  {
-    name: "Vincent",
-    surname: "Willems",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Rob", surname: "Maas", gender: "male", region: "Netherlands" },
-  { name: "Jan", surname: "Timmermans", gender: "male", region: "Netherlands" },
-  {
-    name: "Leentje de",
-    surname: "Boer",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Lotte", surname: "Vos", gender: "female", region: "Netherlands" },
-  {
-    name: "Twan van der",
-    surname: "Velden",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Tineke",
-    surname: "Willems",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Willemijn van der",
-    surname: "Laan",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Aart", surname: "Peters", gender: "male", region: "Netherlands" },
-  {
-    name: "Suzanne",
-    surname: "Smeets",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Lisa", surname: "Smeets", gender: "female", region: "Netherlands" },
-  {
-    name: "Renske van der",
-    surname: "Wal",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Elise", surname: "Dekker", gender: "female", region: "Netherlands" },
-  { name: "Sander", surname: "Smit", gender: "male", region: "Netherlands" },
-  { name: "Wouter", surname: "Groen", gender: "male", region: "Netherlands" },
-  {
-    name: "Stefan de",
-    surname: "Bruin",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Maaike",
-    surname: "Koster",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Quintin",
-    surname: "Kuijpers",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Huib", surname: "Hoekstra", gender: "male", region: "Netherlands" },
-  {
-    name: "Lonneke van",
-    surname: "Dijk",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Camiel de",
-    surname: "Graaf",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Lonneke",
-    surname: "Evers",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Hendrika",
-    surname: "Jacobs",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Thijs", surname: "Wolters", gender: "male", region: "Netherlands" },
-  {
-    name: "Mirthe van",
-    surname: "Dongen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Willemijn",
-    surname: "Smit",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Ineke", surname: "Bakker", gender: "female", region: "Netherlands" },
-  {
-    name: "Noortje van der",
-    surname: "Veen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Anna van der",
-    surname: "Horst",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Corien de",
-    surname: "Bruin",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Sara van",
-    surname: "Vliet",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Lisa van",
-    surname: "Dongen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Corien",
-    surname: "Dekker",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Carlijn van der",
-    surname: "Meulen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Florus van der",
-    surname: "Ven",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Mirthe",
-    surname: "Timmermans",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Luuk", surname: "Verbeek", gender: "male", region: "Netherlands" },
-  {
-    name: "Wies van de",
-    surname: "Velde",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Victor de", surname: "Boer", gender: "male", region: "Netherlands" },
-  {
-    name: "Renske de",
-    surname: "Haan",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Christiaan",
-    surname: "Bakker",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Boudewijn",
-    surname: "Jansen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Thomas de",
-    surname: "Lange",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Elise", surname: "Visser", gender: "female", region: "Netherlands" },
-  {
-    name: "Laura",
-    surname: "Kuijpers",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Victor", surname: "Willems", gender: "male", region: "Netherlands" },
-  {
-    name: "Tineke",
-    surname: "Timmermans",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Roos",
-    surname: "Hendriks",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Aad van",
-    surname: "Leeuwen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Aart", surname: "Scholten", gender: "male", region: "Netherlands" },
-  { name: "Rik", surname: "Huisman", gender: "male", region: "Netherlands" },
-  {
-    name: "Mirthe",
-    surname: "Jacobs",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Sara van den",
-    surname: "Berg",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Valentijn",
-    surname: "Hoekstra",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Paul de", surname: "Ruiter", gender: "male", region: "Netherlands" },
-  { name: "Emma", surname: "Koning", gender: "female", region: "Netherlands" },
-  {
-    name: "Emiel",
-    surname: "Vermeulen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Paulien",
-    surname: "Hoekstra",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Wies", surname: "Jonker", gender: "female", region: "Netherlands" },
-  { name: "Michiel", surname: "Meijer", gender: "male", region: "Netherlands" },
-  {
-    name: "Jacolien van der",
-    surname: "Laan",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Lotte",
-    surname: "Timmermans",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Christien",
-    surname: "Vos",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Femke", surname: "Kuiper", gender: "female", region: "Netherlands" },
-  { name: "Aart", surname: "Huisman", gender: "male", region: "Netherlands" },
-  { name: "Jaap", surname: "Sanders", gender: "male", region: "Netherlands" },
-  { name: "Gerard", surname: "Willems", gender: "male", region: "Netherlands" },
-  {
-    name: "Kristien de",
-    surname: "Haan",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Peter van der",
-    surname: "Pol",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Eefke", surname: "Mulder", gender: "female", region: "Netherlands" },
-  { name: "Bas", surname: "Brouwer", gender: "male", region: "Netherlands" },
-  {
-    name: "Johanneke",
-    surname: "Bakker",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Vincent", surname: "Mulder", gender: "male", region: "Netherlands" },
-  {
-    name: "Ineke van der",
-    surname: "Velden",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Teun van", surname: "Loon", gender: "male", region: "Netherlands" },
-  { name: "Aart", surname: "Smit", gender: "male", region: "Netherlands" },
-  {
-    name: "Paulien",
-    surname: "Hendriks",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Bas van der",
-    surname: "Laan",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Niek", surname: "Bosman", gender: "male", region: "Netherlands" },
-  {
-    name: "Christien de",
-    surname: "Boer",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Lotte", surname: "Groen", gender: "female", region: "Netherlands" },
-  { name: "Niek", surname: "Koning", gender: "male", region: "Netherlands" },
-  {
-    name: "Lieke",
-    surname: "Hermans",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Eefke",
-    surname: "Vermeulen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Emma",
-    surname: "Gerritsen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Thomas",
-    surname: "Vermeulen",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Laurens van der",
-    surname: "Wal",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Lieke", surname: "Kramer", gender: "female", region: "Netherlands" },
-  { name: "Tom de", surname: "Vries", gender: "male", region: "Netherlands" },
-  { name: "Victor", surname: "Smeets", gender: "male", region: "Netherlands" },
-  {
-    name: "Thijs van de",
-    surname: "Velde",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Yasmijn van",
-    surname: "Vliet",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Victor van",
-    surname: "Loon",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Paul", surname: "Hendriks", gender: "male", region: "Netherlands" },
-  { name: "Jan", surname: "Kuiper", gender: "male", region: "Netherlands" },
-  { name: "Camiel", surname: "Brouwer", gender: "male", region: "Netherlands" },
-  { name: "Olaf", surname: "Kuijpers", gender: "male", region: "Netherlands" },
-  {
-    name: "Ido van den",
-    surname: "Heuvel",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Nelleke", surname: "Vos", gender: "female", region: "Netherlands" },
-  {
-    name: "Rob van den",
-    surname: "Brink",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Thijs van",
-    surname: "Vliet",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Ido", surname: "Mulder", gender: "male", region: "Netherlands" },
-  { name: "Teun", surname: "Bakker", gender: "male", region: "Netherlands" },
-  { name: "Kees", surname: "Smit", gender: "male", region: "Netherlands" },
-  {
-    name: "Christien",
-    surname: "Schouten",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Bart van der",
-    surname: "Meer",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Lotte van den",
-    surname: "Brink",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Suzanne",
-    surname: "Bakker",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Doortje van den",
-    surname: "Brink",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Tineke de",
-    surname: "Ruiter",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Hanneke",
-    surname: "Wolters",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Kees", surname: "Sanders", gender: "male", region: "Netherlands" },
-  {
-    name: "Geert de",
-    surname: "Ruiter",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Gerard van den",
-    surname: "Berg",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Christien",
-    surname: "Mulder",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Thomas van",
-    surname: "Dijk",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Kees van der",
-    surname: "Horst",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Laura", surname: "Mulder", gender: "female", region: "Netherlands" },
-  {
-    name: "Wouter de",
-    surname: "Ruiter",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Suzanne van den",
-    surname: "Heuvel",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Mirthe",
-    surname: "Kuiper",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Jacolien van",
-    surname: "Wijk",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Laurens", surname: "Bakker", gender: "male", region: "Netherlands" },
-  { name: "Dirk", surname: "Bos", gender: "male", region: "Netherlands" },
-  {
-    name: "Hendrika de",
-    surname: "Ruiter",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Peter de", surname: "Leeuw", gender: "male", region: "Netherlands" },
-  { name: "Chris", surname: "Kramer", gender: "male", region: "Netherlands" },
-  { name: "Thijs de", surname: "Wit", gender: "male", region: "Netherlands" },
-  {
-    name: "Maartje van",
-    surname: "Loon",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Sander de",
-    surname: "Ruiter",
-    gender: "male",
-    region: "Netherlands"
-  },
-  { name: "Evert", surname: "Dekker", gender: "male", region: "Netherlands" },
-  {
-    name: "Hendrika",
-    surname: "Willems",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Lieke van",
-    surname: "Vliet",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Luuk de", surname: "Wit", gender: "male", region: "Netherlands" },
-  {
-    name: "Heleen de",
-    surname: "Haan",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Neeltje",
-    surname: "Schouten",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Niek de", surname: "Groot", gender: "male", region: "Netherlands" },
-  {
-    name: "Tineke",
-    surname: "Kuijpers",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Eelco", surname: "Prins", gender: "male", region: "Netherlands" },
-  {
-    name: "Thea",
-    surname: "Hoekstra",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Arjan van", surname: "Beek", gender: "male", region: "Netherlands" },
-  { name: "Reinout", surname: "Prins", gender: "male", region: "Netherlands" },
-  {
-    name: "Nelleke",
-    surname: "Molenaar",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Niek de", surname: "Graaf", gender: "male", region: "Netherlands" },
-  {
-    name: "Carlijn van der",
-    surname: "Horst",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Eva", surname: "Scholten", gender: "female", region: "Netherlands" },
-  { name: "Pieter", surname: "Jonker", gender: "male", region: "Netherlands" },
-  { name: "Twan", surname: "Vink", gender: "male", region: "Netherlands" },
-  {
-    name: "Femke",
-    surname: "Brouwer",
-    gender: "female",
-    region: "Netherlands"
-  },
-  { name: "Twan de", surname: "Vos", gender: "male", region: "Netherlands" },
-  { name: "Rob", surname: "Vos", gender: "male", region: "Netherlands" },
-  { name: "Michiel de", surname: "Vos", gender: "male", region: "Netherlands" },
-  {
-    name: "Wies van der",
-    surname: "Horst",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Jaap van de",
-    surname: "Velde",
-    gender: "male",
-    region: "Netherlands"
-  },
-  {
-    name: "Johanneke van",
-    surname: "Loon",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Mirthe van",
-    surname: "Veen",
-    gender: "female",
-    region: "Netherlands"
-  },
-  {
-    name: "Leentje",
-    surname: "Wolters",
-    gender: "female",
-    region: "Netherlands"
+const state = {
+
+ dentists: [
+  {id:0, name:"Famke",  surName: "Schneiders", phoneNr: "0612345678", email:"famke@tandartspraktijkbvt.nl", Ill: false},
+  {id:1, name:"Carla", surName: "Snepvangers", phoneNr: "0687654321", email:"carla@tandartspraktijkbvt.nl", Ill: false},
+  {id:2, name:"Marijn", surName: "Pijnenborg", phoneNr: "0624688642", email:"marijn@tandartspraktijkbvt.nl", Ill: false},
+  {id:3, name:"Ziba", surName: "Nabati", phoneNr: "0636985214", email:"ziba@tandartspraktijkbvt.nl", Ill: false},
+],
+
+
+appointments: [
+  {id:5, dag:"1", start:"9:00",  eind: "10:00"},
+  {id:6, dag:"1", start:"10:00", eind: "11:00"}
+ 
+],
+
+ assistants:  [
+  {id:1,name:"Anita", surName: "Rockman", phoneNr: "0682345678", email:"famke@tandartspraktijkbvt.nl"},
+  {id:2, name:"Stefan", surName: "Goedzak", phoneNr: "0627654321", email:"carla@tandartspraktijkbvt.nl"},
+], 
+
+
+ patients: [
+  {
+  id: 1,
+  name: "Arjan van",
+  surName: "Vliet",
+  birthYear: 1993,
+  email: "arjan@live.nl",
+  phoneNr: "0612345678"
+},
+{ id:2, 
+  name: "Femke", 
+  surName: "Meijer", 
+  birthYear: 1980,
+  email: "Femke@live.nl",
+  phoneNr: "0612345677"
+   },
+{
+  id:3,
+  name: "Lonneke",
+  surname: "Sanders",
+  birthYear: 2000,
+  email: "lonneke@live.nl",
+  phoneNr: "0612345676"
+},
+{ 
+  id:4,
+  name: "Christien",
+  surname: "Prins",
+  birthYear: 1948,
+  email: "Christien@live.nl",
+  phoneNr: "0612345675"
+},
+{ id:5,
+  name: "Mathijs", 
+  surname: "Mol", 
+  birthYear: 1982,
+  email: "mathijs@live.nl",
+  phoneNr: "0612345674" },
+
+{ 
+  id:6,
+  name: "Carlijn", 
+  surname: "Bos", 
+  birthYear: 1980,
+  email: "Carlijn@live.nl",
+  phoneNr: "0612345673" },
+
+{ id:7,
+  name: "Eelco van der",
+  surname: "Meer",
+  birthYear: 1978,
+  email: "eelco@live.nl",
+  phoneNr: "0612345672"
+},
+{ 
+  id:8,
+  name: "Willemijn",
+  surname: "Hofman",
+  birthYear: 2001,
+  email: "willemijn@live.nl",
+  phoneNr: "0612345671"
+},
+{ 
+  id:9,
+  name: "Reinout van der",
+  surname: "Veen",
+  birthYear: 1975,
+  email: "reinout@live.nl",
+  phoneNr: "0612345670"
+},
+{
+  id: 10,
+  name: "Lotte",
+  surname: "Hoekstra",
+  birthYear: 2000,
+  email: "lotte@live.nl",
+  phoneNr: "0612345669"
+},
+{id: 11, name: "Aart", surname: "Willems",  birthYear: 1950,
+email: "aart@live.nl",
+phoneNr: "0612345668"},
+{id: 12, name: "Florus", surname: "Prins",  birthYear: 2003,
+email: "Florus@live.nl",
+phoneNr: "0612345667" },
+{
+  id: 13,
+  name: "Valentijn",
+  surname: "Gerritsen",
+  birthYear: 1995,
+  email: "Valentijn@live.nl",
+  phoneNr: "0612345666"
+},
+{ id: 14, name: "Paul de", surname: "Vos", birthYear: 1958,
+email: "Paul@live.nl",
+phoneNr: "0612345665" },
+{id: 15, name: "Henk", surname: "Postma",  birthYear: 1988,
+email: "henk@live.nl",
+phoneNr: "0612345664" },
+{
+  id: 16,
+  name: "Willemijn van",
+  surname: "Dijk",
+  birthYear: 1990,
+  email: "will@live.nl",
+  phoneNr: "0612345663"
+},
+{
+  id: 17,
+  name: "Boudewijn van",
+  surname: "Dijk",
+  birthYear: 1948,
+  email: "Christien@live.nl",
+  phoneNr: "0612345662"
+},
+{ id: 18,   name: "Jaap de", surname: "Ruiter",  birthYear: 1948,
+email: "Christien@live.nl",
+phoneNr: "0612345661" },
+{
+  id: 19,
+  name: "Floor van",
+  surname: "Veen",
+  birthYear: 1982,
+  email: "floor@live.nl",
+  phoneNr: "0612345660"
+},
+{id: 20, name: "Tom de", surname: "Leeuw", gender: "male", region: "Netherlands" },
+{ id: 21,
+  name: "Heleen van",
+  surname: "Loon",
+  birthYear: 1994,
+  email: "heleen@live.nl",
+  phoneNr: "0612345659"
+},
+{ id: 22, name: "Luuk", surname: "Hermans",  birthYear: 1998,
+email: "luki@live.nl",
+phoneNr: "0612345658" },
+{ id: 23,
+  name: "Huib van der",
+  surname: "Veen",
+  birthYear: 1967,
+  email: "huib@live.nl",
+  phoneNr: "0612345657"
+},
+{ id: 24,name: "Jaap", surname: "Hoekstra",  birthYear: 1989,
+email: "japie@live.nl",
+phoneNr: "0612345656" },
+{ id: 25,
+  name: "Mathijs van",
+  surname: "Dijk",
+  birthYear: 2003,
+  email: "mathijsss@live.nl",
+  phoneNr: "0612345655"
+},
+{ id: 26,
+  name: "Peter de",
+  surname: "Koning",
+  birthYear: 1956,
+  email: "peter@live.nl",
+  phoneNr: "0612345654"
+},
+{ id: 27,
+  name: "Maartje",
+  surname: "Schouten",
+  birthYear: 1999,
+  email: "mari@live.nl",
+  phoneNr: "0612345653"
+},
+{ id: 28, name: "Thomas van", surname: "Dam",  birthYear:1996,
+email: "thom@live.nl",
+phoneNr: "0612345652" },
+{ id: 29, name: "Huub", surname: "Verhoeven",  birthYear: 1979,
+email: "Christien@live.nl",
+phoneNr: "0612345651" },
+{id: 30,
+  name: "Ymke van",
+  surname: "Dongen",
+  birthYear: 1960,
+  email: "Ymke@live.nl",
+  phoneNr: "0612345649"
+},
+{  id: 31,
+  name: "Marja",
+  surname: "Kremer",
+  birthYear: 1950,
+  email: "mar@live.nl",
+  phoneNr: "0612345648"
+},
+{ 
+  id: 32,
+  name: "Willy van",
+  surname: "pongen",
+  birthYear: 1948,
+  email: "wil@live.nl",
+  phoneNr: "0612345647"
+},
+{
+  id: 33,
+  name: "Dirk",
+  surname: "Mans",
+  birthYear: 1979,
+  email: "dirk@live.nl",
+  phoneNr: "0612345646"
+},
+
+{ id: 34, name: "Tommi", surname: "Kuisman",  birthYear: 1998,
+email: "Tommi@live.nl",
+phoneNr: "0612345645"
+},
+{ 
+  id: 35,
+  name: "Dorien de",
+  surname: "Tuijn",
+  birthYear: 1988,
+  email: "door@live.nl",
+  phoneNr: "0612345644"
+},
+{
+  id: 36,
+  name: "Rein",
+  surname: "Hoek",
+  birthYear: 2001,
+  email: "rein@live.nl",
+  phoneNr: "0612345643"
+},
+{
+  id: 37,
+  name: "Vicde",
+  surname: "Graaf",
+  birthYear: 1983,
+  email: "vic@live.nl",
+  phoneNr: "0612345642"
+},
+{ id: 38,
+  name: "Ivo van", surname: "Luijs",  birthYear: 1960,
+  email: "Ivo@live.nl",
+  phoneNr: "0612345641"
+ },
+{
+  id: 39,
+  name: "Tijntje",
+  surname: "Zevers",
+  birthYear: 1989,
+  email: "tijntje@live.nl",
+  phoneNr: "0612345640"
+},
+{ id: 40, name: "Imke", surname: "Dansen",  birthYear: 1959,
+email: "imke@live.nl",
+phoneNr: "0612345639"},
+{
+  id: 41,
+  name: "Annemijn de",
+  surname: "Lange",
+  birthYear: 1980,
+  email: "anne@live.nl",
+  phoneNr: "0612345638"
+},
+{ id: 42, name: "Lucky", surname: "Smulder", birthYear: 1993,
+email: "lucky@live.nl",
+phoneNr: "0612345637" },
+{
+  id: 43,
+  name: "Steff",
+  surname: "Hendricks",
+  birthYear: 1977,
+  email: "steff@live.nl",
+  phoneNr: "0612345636"
+},
+{
+  id: 44,
+  name: "Leentje",
+  surname: "Schuiten",
+  birthYear: 1971,
+  email: "leen@live.nl",
+  phoneNr: "0612345635"
+},
+
+{ id: 45,  name: "Petra ", surname: "Wit",  birthYear: 1948,
+email: "petra@live.nl",
+phoneNr: "0612345634"},
+{ id: 46, name: "Thea", surname: "Kamer",  birthYear: 1973,
+email: "tea@live.nl",
+phoneNr: "0612345633" },
+{ id: 47, name: "Ad", surname: "King",  birthYear: 2000,
+email: "ad@live.nl",
+phoneNr: "0612345632" },
+{ id: 48, name: "Onno", surname: "Vlekker",  birthYear: 1979,
+email: "Onno@live.nl",
+phoneNr: "0612345631"
+},
+{ id: 49, name: "Quintin", surname: "Jonker",  birthYear: 1988,
+email: "Quintin@live.nl",
+phoneNr: "0612345630",
+},
+{ id: 50, name: "Eline van de", surname: "Velde",  birthYear:1997,
+email: "eline@live.nl",
+phoneNr: "0612345629"
+},
+]
+};
+
+const maakTandartsZiek = (state, dentistId) => {
+  const ZiekeTandarts = state.dentists.findIndex(
+      dentists => dentists.id === dentistId
+  );
+  console.log(ZiekeTandarts);
+  let dentist = state.dentists[ZiekeTandarts];
+  console.log(dentist);
+  
+  dentist.Ill = true;
+  const newDentists = [...state.dentists];
+  newDentists[dentist] = newDentists;
+  const newState = {...state};
+  newState.dentists = newDentists;
+  return newState;
+};
+
+
+newState = maakTandartsZiek(state, 0);
+
+const addDentist = (newDentist) => {
+  state.dentists.push(newDentist); 
+};
+
+const newDentist = {id:4, name:"Toos",  surName: "Trekker", phoneNr: "0612345678", email:"toos@tandartspraktijkbvt.nl", Ill: true};
+newState = addDentist(newDentist);
+
+let dubbelpunt = "  :::::::::   ";
+
+
+const renderDentists = dentists => {
+  let allHTML="<div>All Dentists: </div>";
+  for (let index = 0; index < state.dentists.length; index++) {
+    allHTML +=  '<div>  '+ state.dentists[index].id  +
+    dubbelpunt+   state.dentists[index].name +  dubbelpunt+     state.dentists[index].surName + 
+    dubbelpunt+  state.dentists[index].phoneNr +   dubbelpunt + state.dentists[index].email + dubbelpunt+
+    state.dentists[index].Ill+ ' </div>';
   }
-];
+  return allHTML;
+};
+
+const renderAppointments = afspraken => {
+  let allHTML="<div>Alle Appointments: </div>";
+
+  for (let index = 0; index < state.appointments.length; index++) {
+    allHTML +=  '<div>  '+ state.appointments[index].id  + state.appointments[index].dag  +     dubbelpunt + 
+    state.appointments[index].start +  dubbelpunt+     state.appointments[index].eind+' </div>';
+  }
+  return allHTML;
+};
+
+
+
+const render = stateHtml => {
+  const dentistsHTML = renderDentists(state.dentists);
+  const appointmentsHTML = renderAppointments(state.appointments);
+
+  document.querySelector('.tandartsen').innerHTML = dentistsHTML;
+  document.querySelector('.afspraken').innerHTML = appointmentsHTML;
+  console.log('ttt'+ dentistsHTML);
+};
+
+
+
+
 
 const getRandomName = () => {
   const person = names[Math.floor(Math.random() * 250)];
@@ -1047,6 +441,8 @@ const createCalendarView = () => {
 };
 
 const start = () => {
+  //print html tandartsen en afspraken uit
+  render(newState);
   try {
     createDayView();
   } catch {}
