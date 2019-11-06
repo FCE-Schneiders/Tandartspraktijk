@@ -7,10 +7,34 @@
     <title>Tandartspraktijk</title>
     <link rel="stylesheet" type="text/css" href="index.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
     <p>Tandartspraktijk</p>
+    <div>
+        <p>Add Dentist</p>
 
+        <form>
+         <div> firstName: <input id="firstName" type="text" name="firstName" />  </div> 
+         <div> lastName: <input id="lastName" type="text" name="lastName" />  </div>
+         <div> phone: <input id="phoneNr" type="text" name="phoneNr" />  </div>
+         <div> Email: <input id="email" type="text" name="email" />  </div>
+         <div><input type="button" onclick="addDentist(); event.preventDefault(); " value="voeg toe"/></div>
+
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+<br /><br /><br /><br /><br /><br />
     <div>
         <div class="calendarview">
             <div class="header">
@@ -32,10 +56,16 @@
     
         </ul>
     </div>
+
+
     <div><hr /><br /></div>
     <div class="tandartsen">
 
     </div>
+
+
+
+
     <div><hr /><br /></div>
     <div class="afspraken">
 
@@ -43,5 +73,5 @@
 
 
     </body>
-<script type="text/javascript" src="script.js"></script>
+
 </html>
